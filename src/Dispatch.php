@@ -130,7 +130,7 @@ abstract class Dispatch
     {
         if ($this->route) {
             if (is_callable($this->route['handler'])) {
-                call_user_func($this->route['handler'], ($this->route['data'] ?? []));
+                echo call_user_func($this->route['handler'], ($this->route['data'] ?? []));
                 return true;
             }
 
@@ -140,7 +140,7 @@ abstract class Dispatch
             if (class_exists($controller)) {
                 $newController = new $controller($this);
                 if (method_exists($controller, $method)) {
-                    $newController->$method(($this->route['data'] ?? []));
+                    echo $newController->$method(($this->route['data'] ?? []));
                     return true;
                 }
 
